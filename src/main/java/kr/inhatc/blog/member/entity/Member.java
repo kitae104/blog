@@ -1,6 +1,10 @@
 package kr.inhatc.blog.member.entity;
 
 
+
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -22,6 +26,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
+@DynamicInsert
 public class Member extends BaseEntity
 {
 	@Id
@@ -40,6 +45,6 @@ public class Member extends BaseEntity
 
 	
 	@Enumerated(EnumType.STRING)  // 문자열 형태로 사용
-	@Column(nullable = false, length = 20)
-    private Role role;
+	@Column(nullable = false, length = 20, columnDefinition = "varchar(20) default 'USER'")	
+    private Role role; 
 }
