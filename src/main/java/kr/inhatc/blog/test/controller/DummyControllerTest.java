@@ -2,18 +2,13 @@ package kr.inhatc.blog.test.controller;
 
 import java.util.List;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import jakarta.persistence.EntityNotFoundException;
 import kr.inhatc.blog.member.constant.Role;
@@ -49,7 +44,7 @@ public class DummyControllerTest
 		return member;
 	}
 	
-	@Transactional
+	@Transactional 	// 함수 종료시 자동 commit
 	@PutMapping("/dummy/member/{id}")
 	public Member updateMember(@PathVariable long id, @RequestBody Member member) { 
 		System.out.println("id : " + id);
@@ -58,10 +53,12 @@ public class DummyControllerTest
 		Member findMember = memberRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("해당 엔티티를 찾지 못했습니다."));
 		findMember.setPassword(member.getPassword());
 		findMember.setEmail(member.getEmail());
-		
-		Member updateMember = memberRepository.save(findMember);
-		System.out.println("Member(수정후) :" + updateMember);
-		return updateMember;
+
+		// 더티체킹이란?
+		// JPA가 엔티티를 영속화할 때, 영속화된 엔티티를 변경하면, 트랜잭션이 끝나는 시점에 해당 테이블에 변경분을 반영한다.
+//		Member updateMember = memberRepository.save(findMember);
+//		System.out.println("Member(수정후) :" + updateMember);
+		return null;
 	}
 	
 	
@@ -77,5 +74,20 @@ public class DummyControllerTest
 		
 		System.out.println(mem);
 		return "회원가입이 완료되었습니다.";
+	}
+
+	/**
+	 * 멤버 삭제하기
+	 */
+	@DeleteMapping("/dummy/member/{id}")
+	public String deleteMember(@PathVariable long id) {
+		System.out.println("id : " + id);
+		// 예외 처리
+		try {
+			memberRepository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			return "삭제에 실패하였습니다. id : " + id;
+		}
+		return "삭제되었습니다. id : " + id;
 	}
 }
