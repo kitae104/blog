@@ -18,8 +18,17 @@ spring:
   application:
     name: SmartWorkShop
 
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
 
-#################################
+  thymeleaf:
+    cache: true
+    encoding: UTF-8
+
+  #################################
 # MySQL Setting
 #################################
   datasource:
