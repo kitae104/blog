@@ -40,7 +40,7 @@ public class DummyControllerTest
 	@GetMapping("/dummy/member/{id}")
 	public Member detail(@PathVariable long id) { 
 		System.out.println("id : " + id);
-		Member member = memberRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+		Member member = memberRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("해당 엔티티를 찾지 못했습니다."));
 		return member;
 	}
 	
