@@ -1,16 +1,14 @@
 package kr.inhatc.blog.utils.audit.entity;
 
 
-
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @EntityListeners(value = {AuditingEntityListener.class})    // 감시 기능 적용
 @MappedSuperclass   //자식 클래스에 매핑 정보만 제공하기 위해 사용
