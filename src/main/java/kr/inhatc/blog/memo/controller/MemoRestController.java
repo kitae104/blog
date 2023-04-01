@@ -1,21 +1,14 @@
 package kr.inhatc.blog.memo.controller;
 
-import java.util.List;
-
 import kr.inhatc.blog.memo.dto.MemoDto;
 import kr.inhatc.blog.memo.entity.Memo;
-import kr.inhatc.blog.memo.service.MemoService;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
 import kr.inhatc.blog.memo.repository.MemoRepository;
+import kr.inhatc.blog.memo.service.MemoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Log4j2
 @RequiredArgsConstructor    // 꼭 필요한 요소(final) 자동 생성
