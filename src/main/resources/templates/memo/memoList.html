@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+
+</th:block>
+
+<!-- 사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+
+</th:block>
+
+<div layout:fragment="content">
+    <nav class="container">
+        <h1>메모 리스트</h1>
+      	<div>
+	        <table class="table table-hover">
+	            <colgroup>
+	                <col width="2%" />
+	                <col width="5%" />
+	                <col width="10%" />
+	                <col width="25%" />
+	                <col width="10%" />
+	                <col width="5%" />
+	            </colgroup>
+	            <thead>
+	            <tr>
+	                <th>
+	                    <label class="checkbox-inline">
+	                        <input type="checkbox" id="allCheckBox" class="chk" onclick="allChecked()">
+	                    </label>
+	                </th>
+	                <th>번호</th>
+	                <th>이름</th>
+	                <th>메시지</th>
+	                <th>날짜</th>	                
+	                <th>삭제</th>	                
+	            </tr>
+	            </thead>
+
+				<tbody>
+				<!-- .getContent() 조회한 상품 데이터의 리스트를 얻어옴  -->
+				<tr th:each="memo, status: ${memoList}">
+					<td><input type="checkbox"></td>
+					<td>
+						<a th:href="'/memo/detail'+${memo.id}" th:text="${memo.id}"></a>
+					</td>
+					<td th:text="${memo.userName}"></td>
+					<td th:text="${memo.contents}"></td>
+					<!-- 현재 상품의 판매 상태(현재 T()에 대한 == 이 안되는 상태!! -->
+					<td th:text="${#temporals.format(memo.regTime, 'yyyy-MM-dd')}"></td>
+					<td>
+						<button type="button" class="btn btn-danger" onclick="deleteMemo(${memo.id})">삭제</button>
+					</td>
+				</tr>
+				</tbody>
+	        </table>
+        </div>
+        <br>
+    </nav>
+</div>
+
+</html>
