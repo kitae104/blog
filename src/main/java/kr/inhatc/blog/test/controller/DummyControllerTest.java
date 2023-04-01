@@ -1,7 +1,10 @@
 package kr.inhatc.blog.test.controller;
 
-import java.util.List;
-
+import jakarta.persistence.EntityNotFoundException;
+import kr.inhatc.blog.member.constant.Role;
+import kr.inhatc.blog.member.entity.Member;
+import kr.inhatc.blog.member.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,11 +13,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.persistence.EntityNotFoundException;
-import kr.inhatc.blog.member.constant.Role;
-import kr.inhatc.blog.member.entity.Member;
-import kr.inhatc.blog.member.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
