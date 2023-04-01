@@ -1,25 +1,15 @@
 package kr.inhatc.blog.member.entity;
 
 
-
-import kr.inhatc.blog.member.dto.MemberFormDto;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.DynamicInsert;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.*;
 import kr.inhatc.blog.member.constant.Role;
+import kr.inhatc.blog.member.dto.MemberFormDto;
 import kr.inhatc.blog.utils.audit.entity.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
 
 
 @Data
