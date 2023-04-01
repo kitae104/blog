@@ -64,7 +64,7 @@ public class DummyControllerTest
 	
 	@PostMapping("/dummy/join") 
 	public String join(Member member) {
-		System.out.println("username : " + member.getUsername());
+		System.out.println("username : " + member.getName());
 		System.out.println("password : " + member.getPassword());
 		System.out.println("email : " + member.getEmail());
 		
