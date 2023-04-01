@@ -4,16 +4,15 @@ package kr.inhatc.blog.memo.entity;
 import jakarta.persistence.*;
 import kr.inhatc.blog.memo.dto.MemoDto;
 import kr.inhatc.blog.utils.audit.entity.BaseEntity;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
+import lombok.*;
 
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Entity
 @ToString
+@Builder
 /**
  * 간단 메모 엔티티
  */
