@@ -17,7 +17,7 @@
     <!-- $에 오류가 있는 경우 추가 -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
-    <th:block layout:fragment="script"></th:block>
+
     <th:block layout:fragment="css"></th:block>
 </head>
 
@@ -30,5 +30,5 @@
 
 <div th:replace="fragments/footer::footer"></div>
 </body>
-
+<th:block layout:fragment="script"></th:block>
 </html>
